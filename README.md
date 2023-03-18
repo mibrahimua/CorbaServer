@@ -1,4 +1,4 @@
-# CorbaClient
+# CorbaServer
 Code sample for CORBA server implementation.
 
 ## Instruction
@@ -13,6 +13,9 @@ This will created generated java code in your project.
 
 ## Available service 
 * NameService
+
+# CorbaClient Source Code
+https://github.com/mibrahimua/CorbaClient
 
 
 
