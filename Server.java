@@ -1,12 +1,12 @@
-import EchoApp.Echo;
-import EchoApp.EchoHelper;
+import HelloApp.Hello;
+import HelloApp.HelloHelper;
 import org.omg.CORBA.ORB;
+import org.omg.CORBA.Object;
 import org.omg.CosNaming.NameComponent;
 import org.omg.CosNaming.NamingContextExt;
 import org.omg.CosNaming.NamingContextExtHelper;
 import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
-import org.omg.CORBA.Object;
 
 public class Server {
 
@@ -20,16 +20,16 @@ public class Server {
             rootpoa.the_POAManager().activate();
 
             // create servant
-            EchoServer server = new EchoServer();
+            HelloServer server = new HelloServer();
 
             // get object reference from the servant
             Object ref = rootpoa.servant_to_reference(server);
-            Echo href = EchoHelper.narrow(ref);
+            Hello href = HelloHelper.narrow(ref);
 
             Object objRef = orb.resolve_initial_references("NameService");
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
-            NameComponent path[] = ncRef.to_name("ECHO-SERVER");
+            NameComponent path[] = ncRef.to_name("HELLO-SERVER");
             ncRef.rebind(path, href);
 
             System.out.println("Server ready and waiting ...");
